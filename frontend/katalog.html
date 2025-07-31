@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Katalog | Zapchast.uz</title>
+  <link rel="stylesheet" href="katalog.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">Zapchast.uz</h1>
+      <nav>
+        <a href="/">Bosh sahifa</a>
+        <a href="/katalog.html" class="active">Katalog</a>
+        <a href="/biz-haqimizda.html">Biz haqimizda</a>
+        <a href="/boglanish.html">Bog‘lanish</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Barcha ehtiyot qismlar katalogi</h2>
+      <p>Ekskavator, SANY, yuk mashinalari va boshqa texnikalar uchun original ehtiyot qismlar</p>
+      <div class="search-filter-box">
+        <input type="search" id="searchInput" placeholder="Mahsulot nomini kiriting..." />
+      </div>
+    </div>
+  </section>
+
+  <section class="products container">
+    <h3>Mahsulotlar</h3>
+    <div class="products-container">
+      <!-- Mahsulotlar JavaScript orqali shu yerga chiqadi -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Zapchast.uz – Barcha huquqlar himoyalangan.</p>
+    </div>
+  </footer>
+
+  <script src="./js/products.js"></script>
+</body>
+</html>

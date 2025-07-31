@@ -1,0 +1,135 @@
+/* Umumiy */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  background-color: #f8f8f8;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header */
+header {
+  background-color: #222;
+  color: white;
+  padding: 1rem 0;
+}
+
+.logo {
+  margin: 0;
+  font-size: 24px;
+}
+
+nav {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+nav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
+
+/* Mahsulot */
+.item-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.item-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.item-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.item-details {
+  flex: 2 1 400px;
+  padding: 1rem;
+}
+
+.item-details h2 {
+  margin-top: 0;
+  font-size: 28px;
+  color: #333;
+}
+
+.desc {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #555;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  padding: 5px 0;
+  border-bottom: 1px dashed #ccc;
+  color: #444;
+}
+
+.contact-info {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #ff5722;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #e64a19;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .item-card {
+    flex-direction: column;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 5px 10px;
+  }
+}

@@ -1,0 +1,116 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+  color: #333;
+}
+
+header {
+  background-color: #004080;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2em;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1.1em;
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  background-color: white;
+}
+
+.about-img {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.about-img img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.about-text {
+  flex: 2;
+  padding: 20px;
+}
+
+.about-text h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #004080;
+}
+
+.about-text p {
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.features {
+  padding: 40px 20px;
+  background-color: #e9f1ff;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #004080;
+}
+
+.features-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.feature {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 180px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.feature i {
+  font-size: 2em;
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #004080;
+  color: white;
+  font-size: 0.9em;
+}
+
+/* Mobil moslashuv */
+@media screen and (max-width: 768px) {
+  .about {
+    flex-direction: column;
+  }
+
+  .features-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    width: 90%;
+    max-width: 300px;
+  }
+}

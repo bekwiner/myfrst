@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buyurtma berish</title>
+  <link rel="stylesheet" href="buyurtma.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="order-container">
+    <h1>Buyurtma berish</h1>
+    <p class="info-text">Zapchast nomini, ismingizni va telefon raqamingizni qoldiring. Operatorlar siz bilan tez orada bog‘lanadi.</p>
+
+    <form class="order-form">
+      <label for="name">Ismingiz</label>
+      <input type="text" id="name" placeholder="Ali Valiyev" required>
+
+      <label for="phone">Telefon raqamingiz</label>
+      <input type="tel" id="phone" placeholder="+998 90 123 45 67" required>
+
+      <label for="product">Qidirayotgan zapchast</label>
+      <input type="text" id="product" placeholder="Masalan: SANY SY215 ekskavator uchun filtr" required>
+
+      <button type="submit"><i class="fa-solid fa-paper-plane"></i> Buyurtma yuborish</button>
+    </form>
+  </div>
+</body>
+</html>
