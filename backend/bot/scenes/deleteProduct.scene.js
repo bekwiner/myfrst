@@ -5,7 +5,6 @@ import Admin from "../../models/Admin.model.js";
 const deleteProductScene = new Scenes.WizardScene(
   "deleteProductScene",
 
-  // 1. Adminni tekshirish
   async (ctx) => {
     const telegramId = ctx.from?.id?.toString();
     if (!telegramId) {
@@ -23,7 +22,6 @@ const deleteProductScene = new Scenes.WizardScene(
     return ctx.wizard.next();
   },
 
-  // 2. ID asosida mahsulotni o‘chirish
   async (ctx) => {
     const productId = ctx.message?.text?.trim();
 

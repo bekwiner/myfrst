@@ -1,4 +1,4 @@
-import { Telegraf, Scenes, session } from "telegraf";
+import { Telegraf, Scenes, session, Markup } from "telegraf";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import addProductScene from "./scenes/addProduct.scene.js";
@@ -10,19 +10,19 @@ dotenv.config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-// MongoDB ulanish
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
+  .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("MongoDB error:", err));
 
-// Scene'larni ro'yxatdan o'tkazish
 const stage = new Scenes.Stage([addProductScene, deleteProductScene]);
 
 bot.use(session());
 bot.use(stage.middleware());
 
-// /start komandasi
+/**
+ * START komandasi
+ */
 bot.start(async (ctx) => {
   const telegramId = ctx.from?.id?.toString();
   if (!telegramId) return ctx.reply("⚠️ Telegram ID topilmadi");
@@ -30,18 +30,30 @@ bot.start(async (ctx) => {
   const allowed = await isAdmin(telegramId);
   if (!allowed) return ctx.reply("❌ Siz admin emassiz!");
 
-  ctx.reply(
-    "✅ Salom, mahsulot qo‘shish uchun /addproduct buyrug‘ini yuboring."
+  await ctx.reply(
+    "✅ Salom, bu yerda siz mahsulotlarni boshqarishingiz mumkin.",
+    Markup.keyboard([
+      ["➕ Mahsulot qo‘shish"],
+      ["📜 Mahsulotlar ro‘yxati"],
+      ["🗑 Mahsulot o‘chirish"],
+      [ "👨‍💻 Dasturchi"],
+    ])
+      .resize()
+      .oneTime()
   );
-  ctx.reply(
-    "📜 Mahsulotlar ro‘yxatini ko‘rish uchun /listproducts buyrug‘ini yuboring."
-  );
-  ctx.reply("🗑 Mahsulot o‘chirish uchun /deleteproduct buyrug‘ini yuboring.");
-  
 });
 
-// Mahsulot qo‘shish
-bot.command("addproduct", async (ctx) => {
+/**
+ * Dasturchi haqida
+ */
+bot.hears("👨‍💻 Dasturchi", async (ctx) => {
+  await ctx.reply("@uzb_bekzod — dasturchi", Markup.removeKeyboard());
+});
+
+/**
+ * Mahsulot qo‘shish
+ */
+bot.hears("➕ Mahsulot qo‘shish", async (ctx) => {
   const telegramId = ctx.from?.id?.toString();
   const allowed = await isAdmin(telegramId);
   if (!allowed) return ctx.reply("❌ Sizga ruxsat yo‘q!");
@@ -49,14 +61,15 @@ bot.command("addproduct", async (ctx) => {
   await ctx.scene.enter("addProductScene");
 });
 
-// Mahsulotlar ro‘yxatini ko‘rish
-bot.command("listproducts", async (ctx) => {
+/**
+ * Mahsulotlar ro‘yxati
+ */
+bot.hears("📜 Mahsulotlar ro‘yxati", async (ctx) => {
   const telegramId = ctx.from?.id?.toString();
   const allowed = await isAdmin(telegramId);
   if (!allowed) return ctx.reply("❌ Sizga ruxsat yo‘q!");
 
   const products = await Product.find().sort({ createdAt: -1 });
-
   if (!products.length) return ctx.reply("🛒 Mahsulotlar topilmadi.");
 
   let msg = "📦 Mahsulotlar ro‘yxati:\n\n";
@@ -67,8 +80,10 @@ bot.command("listproducts", async (ctx) => {
   ctx.reply(msg, { parse_mode: "HTML" });
 });
 
-// Mahsulot o‘chirish sahnasiga kirish
-bot.command("deleteproduct", async (ctx) => {
+/**
+ * Mahsulot o‘chirish
+ */
+bot.hears("🗑 Mahsulot o‘chirish", async (ctx) => {
   const telegramId = ctx.from?.id?.toString();
   const allowed = await isAdmin(telegramId);
   if (!allowed) return ctx.reply("❌ Sizga ruxsat yo‘q!");
@@ -76,9 +91,11 @@ bot.command("deleteproduct", async (ctx) => {
   await ctx.scene.enter("deleteProductScene");
 });
 
-// Cancel komandasi
-bot.command("cancel", async (ctx) => {
-  ctx.reply("❌ Amaliyot bekor qilindi.");
+/**
+ * Bekor qilish
+ */
+bot.hears("🚫 Bekor qilish", async (ctx) => {
+  await ctx.reply("❌ Amaliyot bekor qilindi.", Markup.removeKeyboard());
   ctx.scene.leave();
 });
 

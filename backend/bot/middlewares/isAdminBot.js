@@ -1,4 +1,3 @@
-// bot/middlewares/isAdminBot.js
 import Admin from '../../models/Admin.model.js';
 
 const isAdmin = async (telegramId) => {

@@ -4,7 +4,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 
-// Fayl saqlanadigan papka
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const uploadDir = path.resolve(__dirname, "../uploads");
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
@@ -20,6 +19,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
 
+
+const upload = multer({ storage });
 export default upload;
