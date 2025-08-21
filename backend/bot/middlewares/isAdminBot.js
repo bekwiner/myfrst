@@ -15,4 +15,4 @@ const isAdmin = async (telegramId) => {
   }
 };
 
-export default isAdmin; // ❗ default export
+export default isAdmin; t
